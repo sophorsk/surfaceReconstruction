@@ -1,0 +1,85 @@
+temp=csvread('~/Google Drive/eggshell/code/puzzle4/piece1.dat');
+temp
+size(temp,2)
+size(temp,1)
+length(temp)
+manipulator('~/Google Drive/eggshell/code/puzzle1/piece1.dat','~/Google Drive/eggshell/code/puzzle1/piece2.dat','~/Google Drive/eggshell/code/puzzle1/piece3.dat','~/Google Drive/eggshell/code/puzzle1/piece4.dat')
+d=manipulator('~/Google Drive/eggshell/code/puzzle1/piece1.dat','~/Google Drive/eggshell/code/puzzle1/piece2.dat','~/Google Drive/eggshell/code/puzzle1/piece3.dat','~/Google Drive/eggshell/code/puzzle1/piece4.dat')
+manipulator('~/Google Drive/eggshell/code/puzzle1/piece1.dat','~/Google Drive/eggshell/code/puzzle1/piece2.dat','~/Google Drive/eggshell/code/puzzle1/piece3.dat','~/Google Drive/eggshell/code/puzzle1/piece4.dat')
+temp1=csvread('~/Google Drive/eggshell/code/puzzle4/piece1.dat');
+temp2=csvread('~/Google Drive/eggshell/code/puzzle1/piece1.dat');
+temp1
+temp2
+scatter3(temp1(:,1),temp1(:,2),temp1(:,3))
+hold on;
+scatter3(temp2(:,1),temp2(:,2),temp2(:,3))
+rotate3d on;
+assemble('~/Google Drive/eggshell/code/puzzle4/piece1.dat','~/Google Drive/eggshell/code/puzzle4/piece2.dat','~/Google Drive/eggshell/code/puzzle4/piece3.dat','~/Google Drive/eggshell/code/puzzle4/piece4.dat')
+assemble('~/Google Drive/eggshell/code/puzzle1/piece1.dat','~/Google Drive/eggshell/code/puzzle1/piece2.dat','~/Google Drive/eggshell/code/puzzle1/piece3.dat','~/Google Drive/eggshell/code/puzzle1/piece4.dat')
+%-- 1/12/14, 5:20 PM --%
+assemble('~/Google Drive/eggshell/code/puzzle1/piece1.dat','~/Google Drive/eggshell/code/puzzle1/piece2.dat','~/Google Drive/eggshell/code/puzzle1/piece3.dat','~/Google Drive/eggshell/code/puzzle1/piece4.dat')
+manipulator('~/Google Drive/eggshell/code/puzzle1/piece1.dat','~/Google Drive/eggshell/code/puzzle1/piece2.dat','~/Google Drive/eggshell/code/puzzle1/piece3.dat','~/Google Drive/eggshell/code/puzzle1/piece4.dat')
+assemble('~/Google Drive/eggshell/code/puzzle4/piece1.dat','~/Google Drive/eggshell/code/puzzle4/piece2.dat','~/Google Drive/eggshell/code/puzzle4/piece3.dat','~/Google Drive/eggshell/code/puzzle4/piece4.dat')
+piece1to2arc = csvread('~/Google Drive/eggshell/code/puzzle5/piece1.dat');
+clear all;
+p12 = csvread('~/Google Drive/eggshell/code/puzzle5/piece1.dat');
+p12=p12(163:191,:)
+p21 = csvread('~/Google Drive/eggshell/code/puzzle5/piece2.dat');
+length(p21)
+208-162
+208-190
+p21=p21(18:46,:)
+size(p21)
+size(p12)
+csvwrite('~/Google Drive/eggshell/code/puzzle5/p12.dat',p12);
+csvwrite('~/Google Drive/eggshell/code/puzzle5/p21.dat',p21);
+p14 = csvread('~/Google Drive/eggshell/code/puzzle5/piece1.dat');
+p14=p14(56:79,:)
+p41 = csvread('~/Google Drive/eggshell/code/puzzle5/piece4.dat');
+208-79
+208-55
+p41 = p41(129:153,:)
+size(p41)
+size(p14)
+testProcrustes
+piece1 = csvread('~/Google Drive/eggshell/code/puzzle5/piece1.dat');
+piece2 = csvread('~/Google Drive/eggshell/code/puzzle5/piece3.dat');
+piece2 = csvread('~/Google Drive/eggshell/code/puzzle5/piece2.dat');
+size(piece1)
+c1=[-0.6571,0.0814,0.2771]
+ones(2,3)
+ones(2,3)+c1
+help diag
+testProcrustes
+c1=map('first')
+map=testProcrustes
+c1=map('first')
+c2=map('second')
+r=map('rotation')
+piece1
+piece2
+c1(1)
+c1
+tranc1=[ones(207,1)*c1(1), ones(207,1)*c1(2),ones(207,1)*c1(3)]
+tranc2=[ones(207,1)*c2(1), ones(207,1)*c2(2),ones(207,1)*c2(3)]
+c2
+piece1tran=piece1-tranc1;
+piece2tran=piece2-tranc2;
+scatter3(piece1tran(:,1),piece1tran(:,2),piece1tran(3,:));
+scatter3(piece1tran(:,1),piece1tran(:,2),piece1tran(:,3));
+hold on;
+scatter3(piece2tran(:,1),piece2tran(:,2),piece2tran(:,3));
+rotate3d
+rotate3d on;
+r
+piece1tranr=piece1tran*r;
+piece1tranr-piece2tran
+scatter3(piece2tran(:,1),piece2tran(:,2),piece2tran(:,3));
+rotate3d on;
+hold on;
+scatter3(piece1tranr(:,1),piece1tranr(:,2),piece1tranr(:,3));
+piece2tranr=piece2tran*r;
+scatter3(piece2tranr(:,1),piece2tranr(:,2),piece2tranr(:,3));
+hold on;
+scatter3(piece1tran(:,1),piece1tran(:,2),piece1tran(:,3));
+rotate3d on;

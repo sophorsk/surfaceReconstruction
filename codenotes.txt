@@ -1,0 +1,25 @@
+
+compsig.m
+
+This function computes the signature of the space curve.  We use the numerically invariant approximations from Boutin’s paper.
+
+signature3d.m
+
+This file applies an 3d Euclidean transformation to a given curve.  We would like to add some computation of the signature to begin experimenting with congruent curves and their signatures.  This file can serve as a testbed for signature computations.
+
+10/26:  added a symbolic computation of exact values of curvature and torsion for comparison with approximation computations in compsig.m
+
+
+curvereconstruction2d.m
+
+This is a fancy way of using Delaunay triangulations to order the points in a point cloud that is supposed to represent a sampling of points on a curve.
+http://www.mathworks.com/products/matlab/examples.html?file=/products/demos/shipping/matlab/demoDelaunayTri.html
+
+
+DataGen.m
+
+This is to generate synthetic data (spherical puzzle pieces) for testing purpose.
+
+compRotation.m
+This file contains a method to compute the rotation from one curve to another curve from Matrix Computations. 
+The method takes two input: curve1, and curve2. Now it is called in similarityTest. Run the similarityTest.m 

@@ -1,0 +1,92 @@
+ans =
+    0.9934
+
+Matching for pieces: 1 and 2
+Start Row is: 73
+Start Col is: 71
+End Row is: 85
+End Col is: 83
+Starting Index of 1: 163
+Ending Index of 1: 191
+Starting Index of 2: 162
+Ending Index of 2: 190
+================================
+
+ans =
+
+    0.6691
+
+Matching for pieces: 1 and 3
+Start Row is: 78
+Start Col is: 42
+End Row is: 78
+End Col is: 42
+Starting Index of 1: 175
+Ending Index of 1: 175
+Starting Index of 2: 91
+Ending Index of 2: 91
+================================
+
+ans =
+
+    0.9934
+
+Matching for pieces: 1 and 4
+Start Row is: 21
+Start Col is: 17
+End Row is: 36
+End Col is: 32
+Starting Index of 1: 56
+Ending Index of 1: 79
+Starting Index of 2: 55
+Ending Index of 2: 79
+================================
+
+ans =
+
+    0.9934
+
+Matching for pieces: 2 and 3
+Start Row is: 65
+Start Col is: 68
+End Row is: 74
+End Col is: 77
+Starting Index of 1: 141
+Ending Index of 1: 165
+Starting Index of 2: 140
+Ending Index of 2: 164
+================================
+
+ans =
+
+    0.6800
+
+Matching for pieces: 2 and 4
+Start Row is: 8
+Start Col is: 54
+End Row is: 8
+End Col is: 54
+Starting Index of 1: 23
+Ending Index of 1: 23
+Starting Index of 2: 128
+Ending Index of 2: 128
+================================
+
+ans =
+
+    0.9933
+
+Matching for pieces: 3 and 4
+Start Row is: 65
+Start Col is: 68
+End Row is: 71
+End Col is: 74
+Starting Index of 1: 151
+Ending Index of 1: 168
+Starting Index of 2: 150
+Ending Index of 2: 167
+================================
+
+ans =
+
+     1
