@@ -23,3 +23,6 @@ This is to generate synthetic data (spherical puzzle pieces) for testing purpose
 compRotation.m
 This file contains a method to compute the rotation from one curve to another curve from Matrix Computations. 
 The method takes two input: curve1, and curve2. Now it is called in similarityTest. Run the similarityTest.m 
+
+
+asdasda
