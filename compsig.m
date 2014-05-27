@@ -9,12 +9,14 @@ function [ kappa, kappa_s, tauVal, tau_sVal ] = compsig( pointVec )
         % point1 and point2 are two 3-by-1 colum vectors
         d=sqrt((point1(1)-point2(1))^2+(point1(2)-point2(2))^2+(point1(3)-point2(3))^2);
     end
-
+    
+    % Compute area of a triangle using Heron's formula 
     function area = heron(a, b, c)
         s=(a+b+c)/2;
         area=sqrt(s*(s-a)*(s-b)*(s-c));
     end
 
+    % Compute kappa
     function k = kap(point1, point2, point3)
         a=dist(point1, point2);
         b=dist(point2, point3);
@@ -23,6 +25,7 @@ function [ kappa, kappa_s, tauVal, tau_sVal ] = compsig( pointVec )
         k=4*area/(a*b*c);
     end
    
+    % Compute kappa_s
     function ks = kaps(point1, point2, point3, point4)
         a=dist(point1, point2);
         b=dist(point2, point3);
@@ -31,6 +34,7 @@ function [ kappa, kappa_s, tauVal, tau_sVal ] = compsig( pointVec )
         ks = 3*(kap(point2, point3, point4) - kap(point1, point2, point3))/(a+b+d);
     end
 
+    % Compute tau
     function tau = tauF(point1, point2, point3, point4)
        a = dist(point1, point2);
        b = dist(point2, point3);
@@ -50,6 +54,7 @@ function [ kappa, kappa_s, tauVal, tau_sVal ] = compsig( pointVec )
        
     end
 
+    % Compute tau_s
     function tau_s = tau_sF(point1, point2, point3, point4, point5, point6)
        
         a = dist(point2, point3);

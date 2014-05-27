@@ -1,5 +1,7 @@
-% find the rotation matrix to rotate from one curve to another
-function map = compRotation(curve1, curve2)
+% This matlab program finds centroids and the rotation matrix 
+% to rotate from one curve to another.
+
+function map = compute_procrustes(curve1, curve2)
 
     % 1. compute the centroid
     dimension1 = size(curve1, 2);

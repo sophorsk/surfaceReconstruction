@@ -1,8 +1,9 @@
 % This method calculates the signature similarity coefficient
 % The coefficient is between [0, 1]
 
-function score = similarityCoefficient(pointVec1, pointVec2)
+function score = similarity_coefficient(pointVec1, pointVec2)
     
+    % Compute the signatures of two curves
     function generatePoint = generator(pointVec1, pointVec2)
         [kappa1, kappa_s1, tau1, tau_s1] = compsig(pointVec1);
         [kappa2, kappa_s2, tau2, tau_s2] = compsig(pointVec2);
@@ -62,7 +63,7 @@ function score = similarityCoefficient(pointVec1, pointVec2)
 
     % C1 is set to 1 for now, change later
     function r = rescaling(t)
-        C1 = 5;
+        C1 = 1000;
         r = t./(t + C1);
     end
     

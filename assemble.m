@@ -1,5 +1,5 @@
-% Read the csv file - four files
-% compute the bivertex arcs
+% Read the csv file - four files (test data) compute the bivertex arcs.
+% Run: assemble('~/Google Drive/eggshell/code/puzzle1/piece1.dat', '~/Google Drive/eggshell/code/puzzle1/piece2.dat', '~/Google Drive/eggshell/code/puzzle1/piece3.dat', '~/Google Drive/eggshell/code/puzzle1/piece4.dat')
 
 function result = assemble(filename1, filename2, filename3, filename4)
 
@@ -27,7 +27,7 @@ function result = assemble(filename1, filename2, filename3, filename4)
         
         for i=1:num_arcs1
             for j=1:num_arcs2
-                table(i, j) = similarityCoefficient(bivertex_arcs1{i}, bivertex_arcs2{j});
+                table(i, j) = similarity_coefficient(bivertex_arcs1{i}, bivertex_arcs2{j});
             end
         end
     end
@@ -67,11 +67,8 @@ function result = assemble(filename1, filename2, filename3, filename4)
         data2 = transpose(data2);
         
         % create bivertex arcs for all data
-        bivertex_arcs1 = allBivertices(data1);
-        bivertex_arcs2 = allBivertices(data2);
-        
-        bivertex_arcs1
-        bivertex_arcs2
+        bivertex_arcs1 = decompose_arcs(data1);
+        bivertex_arcs2 = decompose_arcs(data2);
         
         % build a similarity score matrix between two curves
         table = bivertexTable(bivertex_arcs1, bivertex_arcs2);
@@ -188,22 +185,12 @@ function result = assemble(filename1, filename2, filename3, filename4)
             load{i} = rotateData(load{i});
         end
         
-        
-%         new_data = load{1};
-%         csvwrite('~/Google Drive/eggshell/code/puzzle6/piece1.dat', new_data);
-%         new_data = load{2};
-%         csvwrite('~/Google Drive/eggshell/code/puzzle6/piece2.dat', new_data);
-%         new_data = load{3};
-%         csvwrite('~/Google Drive/eggshell/code/puzzle6/piece3.dat', new_data);
-%         new_data = load{4};
-%         csvwrite('~/Google Drive/eggshell/code/puzzle6/piece4.dat', new_data);
-%         
-        num_pieces = size(load, 2);        
-
+        num_pieces = size(load, 2);
         for i=1:(num_pieces - 1)
             data1 = load{i};
             for j=(i+1):num_pieces
-                data2 = load{j};                
+                data2 = load{j};   
+                % compare two pieces at a time
                 trace = tracing(data1, data2);
                 fprintf('Matching for pieces: %d and %d\n', i, j);
                 printData(trace);
@@ -211,9 +198,7 @@ function result = assemble(filename1, filename2, filename3, filename4)
             end
         end
 
-        d=1;
-        %d = table1;
-        
+        d=1;        
     end
 
     result = findMatch(filename1, filename2, filename3, filename4);

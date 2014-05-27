@@ -1,8 +1,6 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% This function decomposes a signature curve
-% into bivertex arcs.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-function bivertex_curve = allBivertices(curve)
+% This function decomposes a signature curve into bivertex arcs.
+
+function bivertex_curve = decompose_arcs(curve)
     
     % store all bivertex arcs and put them in the cell array
     bivertex_curve = {};
@@ -15,8 +13,6 @@ function bivertex_curve = allBivertices(curve)
     k = 1;
     for i=1:(d1 - 1)
         bivertex_curve{j, 1}(:, k) = curve(:, i);
-        % change here to only kappa_s change sign
-        %|| (tau_s(i) * tau_s(i + 1) < 0
         if (kappa_s(i)*kappa_s(i + 1) < 0)
             j = j + 1;
             k = 1;

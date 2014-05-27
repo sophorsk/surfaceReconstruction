@@ -1,4 +1,5 @@
-% path to file: /Users/sophorskhut/Google Drive/eggshell/eggdata/neweggboundaries/
+% This matlab program runs with real egg data.
+% The path to file: ~/Google Drive/eggshell/eggdata/neweggboundaries/
 function result = humpty_dumpty(path)
    
     % load all files from path
@@ -13,7 +14,6 @@ function result = humpty_dumpty(path)
         
         for i=1:num_files
             each_file = files(i).name;
-            each_file
             new_path = strcat(path, each_file);
             
             % read each file
@@ -38,7 +38,7 @@ function result = humpty_dumpty(path)
         ppvals = ppvals';
     end
 
-    % construct the matrix score between two bivertex arcs
+    % Construct the matrix score between two bivertex arcs
     function table = bivertexTable(bivertex_arcs1, bivertex_arcs2)
         
         table = [];
@@ -47,7 +47,7 @@ function result = humpty_dumpty(path)
         
         for i=1:num_arcs1
             for j=1:num_arcs2
-                table(i, j) = similarityCoefficient(bivertex_arcs1{i}, bivertex_arcs2{j});
+                table(i, j) = similarity_coefficient(bivertex_arcs1{i}, bivertex_arcs2{j});
             end
         end
     end
@@ -61,11 +61,8 @@ function result = humpty_dumpty(path)
         data2 = transpose(data2);
         
         % create bivertex arcs for all data
-        bivertex_arcs1 = allBivertices(data1);
-        bivertex_arcs2 = allBivertices(data2);
-        
-        bivertex_arcs1
-        bivertex_arcs2
+        bivertex_arcs1 = decompose_arcs(data1);
+        bivertex_arcs2 = decompose_arcs(data2);
         
         % build a similarity score matrix between two curves
         table = bivertexTable(bivertex_arcs1, bivertex_arcs2);
@@ -168,36 +165,16 @@ function result = humpty_dumpty(path)
         [data, smooth_data] = load(path);
         num_pieces = size(smooth_data, 2);        
         
-        %plot3(data{3}(:,1), data{3}(:,2), data{3}(:,3), '.r');
-        %hold on;
-        %plot3(smooth_data{3}(:,1), smooth_data{3}(:,2), smooth_data{3}(:,3), '.b')
-        
-        
         for i=1:(num_pieces - 1)
             data1 = data{i};
             for j=(i+1):num_pieces
-                data2 = data{j};                
+                data2 = data{j};            
+                % compare two pieces at a time
                 trace = tracing(data1, data2);
                 fprintf('Matching for pieces: %d and %d\n', i, j);
                 printData(trace);
                 disp('================================');
-                
-%                 map = trace{1};
-%                 start_row = map('start_row');
-%                 start_col = map('start_col');
-%                 end_row = map('end_row');
-%                 end_col = map('end_col');
-%                 
-%                 bivertex_arcs1 = trace{2};
-%                 bivertex_arcs2 = trace{3};
-%                 
-%                 start_f = convertIndexS(bivertex_arcs1, start_row);
-%                 end_f = convertIndexE(bivertex_arcs1, end_row);
-%                 
-%                 plot3(data1(start_f:end_f, 1), data1(start_f:end_f, 2), data1(start_f:end_f, 3), 'r');
-%                 hold on;
-%                 plot3(data2(trace{4}:trace{5}, 1), data2(trace{4}:trace{5}, 2), data2(trace{4}:trace{5}, 3), 'b');                
-               
+                               
                 % trace without reversing
                 trace2 = tracing(data1,data2(end:-1:1,:));
                 fprintf('Matching for pieces: %d and %d\n, reversed', i, j);
@@ -206,9 +183,7 @@ function result = humpty_dumpty(path)
             end
         end
 
-        d=1;
-        %d = table1;
-        
+        d=1;        
     end
 
     result = findMatch(path);

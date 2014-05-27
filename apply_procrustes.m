@@ -1,7 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Apply Procrustes to find the centroid and rotation matrix 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function result = applyProcrustes(filename1, filename2) 
+% This matlab program applies Procrustes algorithm to 
+% find the centroid and rotation matrix. 
+
+function result = apply_procrustes(filename1, filename2) 
     
     % load two curves
     function load = loadData(filename1, filename2)
@@ -18,7 +18,7 @@ function result = applyProcrustes(filename1, filename2)
         load = loadData(filename1, filename2);
         data1 = load{1};
         data2 = load{2};
-        matrix = compRotation(data1, data2);
+        matrix = compute_procrustes(data1, data2);
     end
     
     result = findMatrix(filename1, filename2);
